@@ -2,11 +2,14 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ListPage } from '../pages/list/list';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { DashBoardPage } from '../pages/dash-board/dash-board';
+import { UsersPage } from '../pages/users/users';
+import { SettingsPage } from '../pages/settings/settings';
+import { ProductsPage } from '../pages/products/products';
+import { CommentsPage } from '../pages/comments/comments';
+import { TransactionsPage } from '../pages/transactions/transactions';
 
 
 @Component({
@@ -16,7 +19,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = HelloIonicPage;
+  rootPage = DashBoardPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -29,9 +32,15 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'DashBoard', component: DashBoardPage },
+      { title: 'Productos', component: ProductsPage },
+      { title: 'Usuarios', component: UsersPage },
+      { title: 'Comentarios', component: CommentsPage },
+      { title: 'Transacciones', component: TransactionsPage },
+      { title: 'Configuración', component: SettingsPage }
     ];
+
+    localStorage.setItem("apiUrl","https://jsonplaceholder.typicode.com/")
   }
 
   initializeApp() {

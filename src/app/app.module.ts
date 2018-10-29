@@ -3,35 +3,48 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
+import { HttpClientModule } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { UsersPage } from '../pages/users/users';
+import { DashBoardPage } from '../pages/dash-board/dash-board';
+import { SettingsPage } from '../pages/settings/settings';
+import { ProductsPage } from '../pages/products/products';
+import { CommentsPage } from '../pages/comments/comments';
+import { TransactionsPage } from '../pages/transactions/transactions';
+import { UserServiceProvider } from '../providers/user-service/user-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    HelloIonicPage,
-    ItemDetailsPage,
-    ListPage
+    DashBoardPage,
+    UsersPage,
+    SettingsPage,
+    ProductsPage,
+    CommentsPage,
+    TransactionsPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HelloIonicPage,
-    ItemDetailsPage,
-    ListPage
+    DashBoardPage,
+    UsersPage,
+    SettingsPage,
+    ProductsPage,
+    CommentsPage,
+    TransactionsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserServiceProvider
   ]
 })
 export class AppModule {}
