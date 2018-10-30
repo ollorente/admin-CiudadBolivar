@@ -1,26 +1,27 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from "@angular/core";
 
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Platform, MenuController, Nav } from "ionic-angular";
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { DashBoardPage } from '../pages/dash-board/dash-board';
-import { UsersPage } from '../pages/users/users';
-import { SettingsPage } from '../pages/settings/settings';
-import { ProductsPage } from '../pages/products/products';
-import { CommentsPage } from '../pages/comments/comments';
-import { TransactionsPage } from '../pages/transactions/transactions';
-
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { DashBoardPage } from "../pages/dash-board/dash-board";
+import { UsersPage } from "../pages/users/users";
+import { SettingsPage } from "../pages/settings/settings";
+import { ProductsPage } from "../pages/products/products";
+import { CommentsPage } from "../pages/comments/comments";
+import { TransactionsPage } from "../pages/transactions/transactions";
+import { LoginPage } from "../pages/login/login";
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: "app.html"
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
+  @ViewChild(Nav)
+  nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = DashBoardPage;
-  pages: Array<{title: string, component: any}>;
+  rootPage = LoginPage;
+  pages: Array<{ title: string; component: any }>;
 
   constructor(
     public platform: Platform,
@@ -32,15 +33,16 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'DashBoard', component: DashBoardPage },
-      { title: 'Productos', component: ProductsPage },
-      { title: 'Usuarios', component: UsersPage },
-      { title: 'Comentarios', component: CommentsPage },
-      { title: 'Transacciones', component: TransactionsPage },
-      { title: 'Configuración', component: SettingsPage }
+      { title: "DashBoard", component: DashBoardPage },
+      { title: "Productos", component: ProductsPage },
+      { title: "Usuarios", component: UsersPage },
+      { title: "Comentarios", component: CommentsPage },
+      { title: "Transacciones", component: TransactionsPage },
+      { title: "Configuración", component: SettingsPage }
     ];
 
-    localStorage.setItem("apiUrl","https://jsonplaceholder.typicode.com/")
+    // Conexión a rb-chapinero
+    localStorage.setItem("apiUrl", "http://localhost:3000/");
   }
 
   initializeApp() {
@@ -57,5 +59,15 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
+  }
+
+  logOut() {
+    localStorage.removeItem("user");
+    localStorage.removeItem("jwt");
+    this.nav.setRoot(LoginPage);
+  }
+
+  public isThereASession(): boolean {
+    return localStorage.getItem("jwt") != undefined;
   }
 }

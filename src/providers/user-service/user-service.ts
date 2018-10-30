@@ -35,13 +35,21 @@ export class UserServiceProvider {
     });
 
     const options = { headers: headers };
+    let apiUrl = localStorage.getItem("apiUrl");
+    let completeUrl = apiUrl + url;
+    return this.http.get(completeUrl, options);
+  }
+
+  postData(data, url) {
+    let headers = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+
+    const options = { headers: headers };
     let json = JSON.stringify(data);
     let apiUrl = localStorage.getItem("apiUrl");
     let completeUrl = apiUrl + url;
-    return this.newMethod(completeUrl, json, options);
+    return this.http.post(completeUrl, json, options);
   }
-
-  private newMethod(completeUrl: string, json: string, options: { headers: HttpHeaders; }) {
-    return this.http.get(completeUrl, json, options);
-  }
+  
 }

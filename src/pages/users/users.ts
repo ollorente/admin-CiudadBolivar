@@ -17,11 +17,11 @@ export class UsersPage {
   ) {}
 
   ionViewDidLoad() {
-    this.getUsers();
+    this.getData();
   }
 
-  getUsers() {
-    this.UserServiceProvider.getData(this.items, "users").subscribe(
+  getData() {
+    this.UserServiceProvider.getData(this.items, "api/v1/users").subscribe(
       data => {
         this.items = data;
       },

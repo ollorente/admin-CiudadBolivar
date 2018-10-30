@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="content-log">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Celular</ion-label>
+        <ion-input type="number" [(ngModel)]="userData.phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Correo Electrónico</ion-label>
+        <ion-input type="email" [(ngModel)]="userData.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Clave</ion-label>
+        <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Confirmar Clave</ion-label>
+        <ion-input type="password" [(ngModel)]="userData.password_confirmation">
+        </ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <button ion-button block color="wp-three" (click)="signUp()">Registrarme</button>
+  </div>
+
+</ion-content>

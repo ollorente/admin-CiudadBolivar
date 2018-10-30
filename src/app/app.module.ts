@@ -14,6 +14,10 @@ import { ProductsPage } from '../pages/products/products';
 import { CommentsPage } from '../pages/comments/comments';
 import { TransactionsPage } from '../pages/transactions/transactions';
 import { UserServiceProvider } from '../providers/user-service/user-service';
+import { SignUpPage } from '../pages/sign-up/sign-up';
+import { LoginPage } from '../pages/login/login';
+import { CountryServiceProvider } from '../providers/country-service/country-service';
+import { CountryPage } from '../pages/country/country';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     SettingsPage,
     ProductsPage,
     CommentsPage,
-    TransactionsPage
+    TransactionsPage,
+    LoginPage,
+    SignUpPage,
+    CountryPage
   ],
   imports: [
     BrowserModule,
@@ -38,13 +45,17 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     SettingsPage,
     ProductsPage,
     CommentsPage,
-    TransactionsPage
+    TransactionsPage,
+    LoginPage,
+    SignUpPage,
+    CountryPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserServiceProvider
+    UserServiceProvider,
+    CountryServiceProvider
   ]
 })
 export class AppModule {}
